@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: master
+    app.openshift.io/vcs-uri: https://github.com/stephmen/docker-next
+  creationTimestamp: "2020-07-21T00:10:25Z"
+  labels:
+    app: docker-next
+    app.kubernetes.io/component: docker-next
+    app.kubernetes.io/instance: docker-next
+    app.kubernetes.io/part-of: docker-nextjs-app
+  name: docker-next
+  namespace: docker-nextjs
+  resourceVersion: "5892019"
+  selfLink: /api/v1/namespaces/docker-nextjs/services/docker-next
+  uid: 934da97d-cae6-11ea-8a77-0ef0e3c74fbe
+spec:
+  clusterIP: 172.30.105.41
+  ports:
+  - name: 3000-tcp
+    port: 3000
+    protocol: TCP
+    targetPort: 3000
+  selector:
+    app: docker-next
+    deploymentconfig: docker-next
+  sessionAffinity: None
+  type: ClusterIP
+status:
+  loadBalancer: {}

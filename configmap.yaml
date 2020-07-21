@@ -1,0 +1,18 @@
+apiVersion: v1
+data:
+   config.toml: |
+    title = "Tweet Service Configuration"
+    # address
+    address = ":9090"
+    # redis
+    [redis]
+        address = "redis.staging:6379"
+        db = 0
+        pass = ""
+    # context
+    [context]
+        timeout = 2
+kind: ConfigMap
+metadata:
+  name: vol-config-tweetor-api
+  namespace: docker-nextjs

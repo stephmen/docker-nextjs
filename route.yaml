@@ -1,0 +1,38 @@
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: master
+    app.openshift.io/vcs-uri: https://github.com/stephmen/docker-next
+    openshift.io/host.generated: "true"
+  creationTimestamp: "2020-07-21T00:10:25Z"
+  labels:
+    app: docker-next
+    app.kubernetes.io/component: docker-next
+    app.kubernetes.io/instance: docker-next
+    app.kubernetes.io/part-of: docker-nextjs-app
+  name: docker-next
+  namespace: docker-nextjs
+  resourceVersion: "5892022"
+  selfLink: /apis/route.openshift.io/v1/namespaces/docker-nextjs/routes/docker-next
+  uid: 934c7909-cae6-11ea-aac9-0a580a80018f
+spec:
+  host: docker-next-docker-nextjs.apps-crc.testing
+  port:
+    targetPort: 3000-tcp
+  subdomain: ""
+  to:
+    kind: Service
+    name: docker-next
+    weight: 100
+  wildcardPolicy: None
+status:
+  ingress:
+  - conditions:
+    - lastTransitionTime: "2020-07-21T00:10:25Z"
+      status: "True"
+      type: Admitted
+    host: docker-next-docker-nextjs.apps-crc.testing
+    routerCanonicalHostname: apps-crc.testing
+    routerName: default
+    wildcardPolicy: None
