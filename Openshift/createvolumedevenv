@@ -1,0 +1,1 @@
+oc set volume dc/nodejs-ex --add --name=config --mount-path=/opt/app-root/src/config --type=configmap --configmap-name=example-configmap

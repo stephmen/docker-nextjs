@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  dev.env: |
+  PRODENDPOINT:=http://apollo-backend-development.apps-crc.testing
+  endpoint:=http://apollo-backend-development.apps-crc.testing 
+kind: ConfigMap
+metadata:
+  annotations:
+  name: example-configmap
+  

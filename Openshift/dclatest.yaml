@@ -1,0 +1,90 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  annotations:
+    app.openshift.io/vcs-ref: master
+    app.openshift.io/vcs-uri: https://github.com/stephmen/docker-nextjs
+  creationTimestamp: "2020-07-22T20:33:38Z"
+  generation: 2
+  labels:
+    app: docker-nextjs
+    app.kubernetes.io/component: docker-nextjs
+    app.kubernetes.io/instance: docker-nextjs
+    app.kubernetes.io/part-of: docker-nextjs-app
+  name: docker-nextjs
+  namespace: docker-nextjs
+  resourceVersion: "6069176"
+  selfLink: /apis/apps.openshift.io/v1/namespaces/docker-nextjs/deploymentconfigs/docker-nextjs
+  uid: 9fcf51e5-cc5a-11ea-90fb-0a580a800098
+spec:
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    app: docker-nextjs
+    deploymentconfig: docker-nextjs
+  strategy:
+    activeDeadlineSeconds: 21600
+    resources: {}
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+    type: Rolling
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: docker-nextjs
+        deploymentconfig: docker-nextjs
+    spec:
+      containers:
+      - image: image-registry.openshift-image-registry.svc:5000/docker-nextjs/docker-nextjs@sha256:60721c9cb4f56cd9c9c64473656bf7e9e6ce9c24ed8fa6e1cf2d17fed9ba474d
+        imagePullPolicy: Always
+        name: docker-nextjs
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+  test: false
+  triggers:
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - docker-nextjs
+      from:
+        kind: ImageStreamTag
+        name: docker-nextjs:latest
+        namespace: docker-nextjs
+      lastTriggeredImage: image-registry.openshift-image-registry.svc:5000/docker-nextjs/docker-nextjs@sha256:60721c9cb4f56cd9c9c64473656bf7e9e6ce9c24ed8fa6e1cf2d17fed9ba474d
+    type: ImageChange
+  - type: ConfigChange
+status:
+  availableReplicas: 1
+  conditions:
+  - lastTransitionTime: "2020-07-22T20:43:19Z"
+    lastUpdateTime: "2020-07-22T20:43:19Z"
+    message: Deployment config has minimum availability.
+    status: "True"
+    type: Available
+  - lastTransitionTime: "2020-07-22T20:43:20Z"
+    lastUpdateTime: "2020-07-22T20:43:20Z"
+    message: replication controller "docker-nextjs-1" successfully rolled out
+    reason: NewReplicationControllerAvailable
+    status: "True"
+    type: Progressing
+  details:
+    causes:
+    - type: ConfigChange
+    message: config change
+  latestVersion: 1
+  observedGeneration: 2
+  readyReplicas: 1
+  replicas: 1
+  unavailableReplicas: 0
+  updatedReplicas: 1

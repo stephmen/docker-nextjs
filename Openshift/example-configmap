@@ -1,0 +1,14 @@
+apiVersion: v1
+data:
+  dev.env: "PRODENDPOINT=\"http://apollo-backend-development.apps-crc.testing\"\n"endpoint=\"http://apollo-backend-development.apps-crc.testing\"\t\n"
+kind: ConfigMap
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","data":{"dev.env":"PRODENDPOINT=\"http://apollo-backend-development.apps-crc.testing\"\nNODE_VERSION=${NODE_VERSION}\t\n"},"kind":"ConfigMap","metadata":{"annotations":{},"creationTimestamp":"2020-07-26T23:22:29Z","name":"example-configmap","namespace":"docker-nextjs","resourceVersion":"6401512","selfLink":"/api/v1/namespaces/docker-nextjs/configmaps/example-configmap","uid":"df8f601b-cf96-11ea-a918-0ef0e3c74fbe"}}
+  creationTimestamp: "2020-07-26T23:22:29Z"
+  name: example-configmap
+  namespace: docker-nextjs
+  resourceVersion: "6469907"
+  selfLink: /api/v1/namespaces/docker-nextjs/configmaps/example-configmap
+  uid: df8f601b-cf96-11ea-a918-0ef0e3c74fbe
